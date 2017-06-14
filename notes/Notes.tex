@@ -196,6 +196,7 @@ This statement may be equally expressed by
 \]
 The following are important logical equivelances:
 \subsubsection{Domination Laws}
+Disjunction with a tautology is a tautology, and conjunction with a contradiction is a contradiction
 \begin{subequations}
 	\begin{equation}
 		p \lor \top \equiv \top
@@ -207,6 +208,7 @@ The following are important logical equivelances:
 	\end{equation}
 \end{subequations}
 \subsubsection{Identity Laws}
+Conjunction with a tautology, and disjunction with a contradiction, are \textit{identity} operations on a proposition 
 \begin{subequations}
 \begin{equation}
 	p \wedge \top \equiv p
@@ -218,6 +220,7 @@ The following are important logical equivelances:
 \end{equation}
 \end{subequations}
 \subsubsection{Negation laws}
+Conjunction of a proposition with its negation is a contradiction, and disjunction of a proposition with its negation is a tautology
 \begin{subequations}
 	\begin{equation}
 		p \wedge \neg p \equiv \bot
@@ -233,6 +236,30 @@ The following are important logical equivelances:
 	\begin{equation}
 		\neg (\neg p) \equiv p
 		\label{eqn: double-negation-law}
+	\end{equation}
+\end{subequations}
+\subsubsection{Idempotent Laws}
+Both the conjunction and disjunction of a proposition with itself yields itself
+\begin{subequations}
+	\begin{equation}
+		p \wedge p \equiv p
+		\label{eqn: idempotent-conjunction}
+	\end{equation}
+	\begin{equation}
+		p \lor p \equiv p
+		\label{eqn: idempotent-disjunction}
+	\end{equation}
+\end{subequations}
+\subsubsection{Absorption Laws}
+The former two equivelances may be \textit{absorbed} into each other as in the following 
+\begin{subequations}
+	\begin{equation}
+		p \wedge (p \lor p) \equiv p
+		\label{eqn: absorption-1}
+	\end{equation}
+	\begin{equation}
+		p \lor (p \wedge p) \equiv p
+		\label{eqn: absorption-2}
 	\end{equation}
 \end{subequations}
 \subsubsection{Commutative Laws}
@@ -258,41 +285,7 @@ This leads to the \textit{commutative laws}
 \end{subequations}
 A similar argument may be used to demonstrate the commutativity of $\oplus$ and $\leftrightarrow$.
 \subsubsection{Associative Laws}
-The associativity of $\lor$ and $\wedge$ can be verified by examining Tables \ref{tab: disjunction-associativity-truth-table} and \ref{tab: conjunction-associativity-truth-table} respectfully.
-\begin{table}[h]
-	\centering
-	\begin{tabular}{ccc|c|c|c|c}
-		$p$ & $q$ & $r$ & $(p\lor q)$ & $(q \lor r)$ & $(p \lor q) \lor r$ & $p \lor (q \lor r)$ \\ \hline
-		T & T & T & T & T & \textbf{T} & \textbf{T}  \\
-		T & T & F & T & T & \textbf{T} & \textbf{T}  \\
-		T & F & T & T & T & \textbf{T} & \textbf{T}  \\
-		T & F & F & T & F & \textbf{T} & \textbf{T}  \\
-		F & T & T & T & T & \textbf{T} & \textbf{T}  \\
-		F & T & F & T & T & \textbf{T} & \textbf{T}  \\
-		F & F & T & F & T & \textbf{T} & \textbf{T}  \\
-		F & F & F & F & F & \textbf{F} & \textbf{F}  \\
-	\end{tabular}
-	\caption{Associativity of $\lor$ by truth table.}
-	\label{tab: disjunction-associativity-truth-table}
-\end{table}
-\begin{table}[h]
-	\centering
-	\begin{tabular}{ccc|c|c|c|c}
-		$p$ & $q$ & $r$ & $(p\wedge q)$ & $(q \wedge r)$ & $(p \wedge q) \wedge r$ & $p \wedge (q \wedge r)$ \\ \hline
-		T & T & T & T & T & \textbf{T} & \textbf{T}  \\
-		T & T & F & T & F & \textbf{F} & \textbf{F}  \\
-		T & F & T & F & F & \textbf{F} & \textbf{F}  \\
-		T & F & F & F & F & \textbf{F} & \textbf{F}  \\
-		F & T & T & F & T & \textbf{F} & \textbf{F}  \\
-		F & T & F & F & F & \textbf{F} & \textbf{F}  \\
-		F & F & T & F & F & \textbf{F} & \textbf{F}  \\
-		F & F & F & F & F & \textbf{F} & \textbf{F}  \\
-	\end{tabular}
-	\caption{Associativity of $\wedge$ by truth table.}
-	\label{tab: conjunction-associativity-truth-table}
-\end{table}
-
-Hence
+Both conjunction and disjunction are \textit{associative}
 \begin{subequation}
 	\begin{equation}
 		p \lor (q \lor r) \equiv (p \lor q) \lor r
@@ -303,47 +296,20 @@ Hence
 		\label{eqn: conjunction-associative-law}
 	\end{equation}
 \end{subequation}
-
 \subsubsection{Distributive Laws}
-The distributivity of $\lor$ and $\wedge$ is demonstrated in Tables \ref{tab: disjunction-distributivity-truth-table} and \ref{tab: conjunction-distributivity-truth-table} respectfully.
-\begin{table}[h]
-	\centering
-	\begin{tabular}{ccc|c|c|c}
-		$p$ & $q$ & $r$ & $(p \lor r)$ & $p \lor (q \wedge r) $ & $(p \lor q) \wedge (p \lor r)$ \\ \hline
-		T & T & T & T & \textbf{T} & \textbf{T}  \\
-		T & T & F & T & \textbf{T} & \textbf{T}  \\
-		T & F & T & T & \textbf{T} & \textbf{T}  \\
-		T & F & F & T & \textbf{T} & \textbf{T}  \\
-		F & T & T & T & \textbf{T} & \textbf{T}  \\
-		F & T & F & F & \textbf{F} & \textbf{F}  \\
-		F & F & T & T & \textbf{F} & \textbf{F}  \\
-		F & F & F & F & \textbf{F} & \textbf{F}  \\
-	\end{tabular}
-	\caption{Distributivity of $\lor$ by truth table. Columns of $(p\lor q)$ and $(q \wedge r)$ are borrowed from Tables \ref{tab: disjunction-associativity-truth-table} and \ref{tab: conjunction-associativity-truth-table} respectively.}
-	\label{tab: disjunction-distributivity-truth-table}
-\end{table}
-
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{ccc|c|c|c}
-		$p$ & $q$ & $r$ & $(p \wedge r)$ & $p \wedge (q \lor r) $ & $(p \wedge q) \lor (p \wedge r)$ \\ \hline
-		T & T & T & T & \textbf{T} & \textbf{T}  \\
-		T & T & F & F & \textbf{T} & \textbf{T}  \\
-		T & F & T & T & \textbf{T} & \textbf{T}  \\
-		T & F & F & F & \textbf{F} & \textbf{F}  \\
-		F & T & T & F & \textbf{F} & \textbf{F}  \\
-		F & T & F & F & \textbf{F} & \textbf{F}  \\
-		F & F & T & F & \textbf{F} & \textbf{F}  \\
-		F & F & F & F & \textbf{F} & \textbf{F}  \\
-	\end{tabular}
-	\caption{Distributivity of $\wedge$ by truth table. Columns of $(q\lor r)$ and $(p \wedge q)$ are borrowed from Tables \ref{tab: disjunction-associativity-truth-table} and \ref{tab: conjunction-associativity-truth-table} respectively.}
-	\label{tab: conjunction-distributivity-truth-table}
-\end{table}
-
+Conjunction and disjunction \textit{distribute} as follows
+\begin{subequations}
+	\begin{equation}
+		p\wedge(q\lor r)\equiv(p\wedge q)\lor(p\wedge r)
+		\label{eqn: conjunction-distributivity}
+	\end{equation}
+	\begin{equation}
+		p\lor(q\wedge r)\equiv(p\lor q)\wedge(p\lor r)
+		\label{eqn: disjunction-distributivity}
+	\end{equation}
+\end{subequations}
 \subsubsection{De Morgan's Laws}
-De Morgan's laws demonstrate how conjunctions and disjunctions are negated. 
-They take the form
+De Morgan's laws demonstrate how conjunctions and disjunctions are negated
 \begin{subequations}
 	\begin{equation}
 		\neg (p\wedge q) \equiv \neg p \lor \neg q
@@ -354,9 +320,6 @@ They take the form
 		\label{eqn: negation-of-disjunction}
 	\end{equation}
 \end{subequations}
-DO TRUTH TABLES
-\subsubsection{Absorption Laws}
-DO TRUTH TABLES
 \subsubsection{Logical Equivelances with $\rightarrow$}
 DO TABLE
 \subsubsection{Logical Equivelances with $\leftrightarrow$}
