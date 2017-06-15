@@ -116,14 +116,14 @@ The converse of a conditional statement $p \rightarrow q$ is given by
 \subsubsection{Contrapositive}
 The contrapositive of a conditional statement is given by 
 \[
-	\neg p \rightarrow \neg q 
+	\neg q \rightarrow \neg p 
 \]
 It is \textit{logically equivelant} to the conditional statement itself; that is to say, the truth tables for a conditional statement and its contrapositvie are \underline{identical}. 
 
 \subsubsection{Inverse}
 The inverse of a conditional statement is given by
 \[
-	\neg q \rightarrow \neg p
+	\neg p \rightarrow \neg q
 \]
 Since a conditional statement is logically equivelant to its contrapositive, and the inverse is the contrapositive of the converse, then the inverse is thus logically equivelant to the converse.
 
@@ -232,6 +232,7 @@ Conjunction of a proposition with its negation is a contradiction, and disjuncti
 	\end{equation}
 \end{subequations}
 \subsubsection{Double Negation Law}
+A proposition is the negation of its negation
 \begin{subequations}
 	\begin{equation}
 		\neg (\neg p) \equiv p
@@ -286,7 +287,8 @@ This leads to the \textit{commutative laws}
 A similar argument may be used to demonstrate the commutativity of $\oplus$ and $\leftrightarrow$.
 \subsubsection{Associative Laws}
 Both conjunction and disjunction are \textit{associative}
-\begin{subequation}
+\begin{subequations}
+	\label{eqn: associative-laws}
 	\begin{equation}
 		p \lor (q \lor r) \equiv (p \lor q) \lor r
 		\label{eqn: disjunction-associative-law}
@@ -295,9 +297,10 @@ Both conjunction and disjunction are \textit{associative}
 		p \wedge (q \wedge r) \equiv (p\wedge q) \wedge r
 		\label{eqn: conjunction-associative-law}
 	\end{equation}
-\end{subequation}
+\end{subequations}
+
 \subsubsection{Distributive Laws}
-Conjunction and disjunction \textit{distribute} as follows
+Conjunction and disjunction \textit{distribute} as in the following 
 \begin{subequations}
 	\begin{equation}
 		p\wedge(q\lor r)\equiv(p\wedge q)\lor(p\wedge r)
@@ -311,6 +314,7 @@ Conjunction and disjunction \textit{distribute} as follows
 \subsubsection{De Morgan's Laws}
 De Morgan's laws demonstrate how conjunctions and disjunctions are negated
 \begin{subequations}
+	\label{eqn: demorgan-laws}
 	\begin{equation}
 		\neg (p\wedge q) \equiv \neg p \lor \neg q
 		\label{eqn: negation-of-conjunction}
@@ -325,8 +329,103 @@ DO TABLE
 \subsubsection{Logical Equivelances with $\leftrightarrow$}
 DO TABLE
 
+\subsection{Propositional Satisfiability}
+Consider the set of $N$ propositions 
+\[
+	\{s_{1}, s_{2}, \dots, s_{N}\} = S_{N}
+\]
+There exist $2^{N}$ possible configurations of truth values for the propositions contained in $S_{N}$.
+Let $p$ be a compound proposition that is some amalgamation of the propositions in $S_{N}$ through logical connectives. 
+We say that $p$ is \textit{satisfiable} if there exists a configuration of truth values in $S_{N}$ such that $p$ is true.
+We call this configuration a \textit{solution} of $p$.
+If there exist no solution to $p$, we say the proposition is \textit{unsatisfiable}.
+That is, a proposition is unsatisfiable if and only if its negation is a tautology. 
+
+\section{Predicates and Quantifiers}
+\subsection{Predicates}
+A \textit{predicate} is statement regarding a \textit{subject} that becomes a proposition when the subject is specified.
+A predicate may be condisered as a \textit{propositional function}; that is, a mapping from the subject to a bivalent truth value.
+We denote a unary predicate as 
+\[
+	P(x) 
+\]
+where $P$ is the predicate condition, and $x$ is a variable that denotes the subject.
+A predecate may have multiple subjects; the predicate 
+\[
+	P(x_{1}, x_{2}, \dots, x_{n})
+\]
+is refered to as an \textit{n-ary} predicate.
+
+\subsection{Quantifiers}
+The variable $x$ in the statement $P(x)$ is a \textit{free} variable.
+In the previous section we discussed how $P(x)$ becomes a proposotion when $x$ is set to a value.
+Here, we discuss another way in which $P(x)$ becomes a proposition: \textit{binding} $x$ with a \textit{universal quantifier}.
+\subsubsection{Universal Quantifier}
+Consider the set 
+\[
+	D = \{x_{1}, x_{2}, \dots, x_{n}\}
+\]
+which we shall call the \textit{domain of discourse}.
+One can construct a compound proposition that is the conjunction of the predicate $P(x)$ for all $x$ in $D$. 
+That is 
+\[
+	P(x_{1}) \wedge P(x_{2}) \wedge \dots \wedge P(x_{n}) \equiv \bigwedge_{i=1}^{n}P(x_{i})
+\]
+Such a prescription is sufficient when the domain of dicource is \textit{finite}.
+What is the equivelent proposition if $D$ is \textit{not} finite? 
+\[
+	\forall x P(x)
+\]
+where we use the \textbf{universal quantifier} $\forall$, read as ``for all''.
+
+\subsubsection{Existential Quantifier}
+Analagous to the universal quantifier, the proposition 
+\[
+	P(x_{1}) \lor P(x_{2}) \lor \dots \lor P(x_{n}) \equiv \bigvee_{i=1}^{n}P(x_{i})
+\]
+may be denoted for a non-finite universe of discourse by
+\[
+	\exists xP(x)
+\]
+where we use the \textbf{existential quantifier} $\exists$, read as ``there exists''.
+
+\subsection{Negating Quantifiers}
+Using the Associative Laws (\ref{eqn: associative-laws}), one may generalise De Morgan's Laws (\ref{eqn: demorgan-laws}) for $n$ propositions
+\begin{subequations}
+	\begin{equation}
+		\neg \left(\bigwedge_{i = 1}^{n} p_{i}\right) \equiv \bigvee_{i=1}^{n}\neg p_{i}
+		\label{eqn: general-demorgan-1}
+	\end{equation}
+	\begin{equation}
+		\neg \left(\bigvee_{i = 1}^{n} p_{i}\right) \equiv \bigwedge_{i=1}^{n}\neg p_{i}
+		\label{eqn: general-demorgan-2}
+	\end{equation}
+	\label{eqn: general-demorgan-laws}
+\end{subequations}
+Suppose  
+\[
+	p_{i} \equiv P(x_{i})
+\]
+for some predicate $P$ where the $x_{i}$ are members of a finite domain of discourse $D$.
+What then if $D$ is \textit{not} finite?
+\begin{subequations}
+	\begin{equation}
+		\neg \forall xP(x) \equiv \exists x\neg P(x)
+		\label{eqn: univeral-quantifier-negation}
+	\end{equation}
+	\begin{equation}
+		\neg \exists xP(x) \equiv \forall x\neg P(x)
+		\label{eqn: existential-quantifier-negation}
+	\end{equation}
+	\label{eqn: quantifier-negation}
+\end{subequations}
+
+
+
 
 \end{document}
+
+
 
 
 
