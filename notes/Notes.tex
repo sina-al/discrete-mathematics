@@ -310,6 +310,7 @@ Conjunction and disjunction \textit{distribute} as in the following
 		p\lor(q\wedge r)\equiv(p\lor q)\wedge(p\lor r)
 		\label{eqn: disjunction-distributivity}
 	\end{equation}
+	\label{eqn: distributive-laws}
 \end{subequations}
 \subsubsection{De Morgan's Laws}
 De Morgan's laws demonstrate how conjunctions and disjunctions are negated
@@ -417,11 +418,20 @@ What then if $D$ is \textit{not} finite?
 		\neg \exists xP(x) \equiv \forall x\neg P(x)
 		\label{eqn: existential-quantifier-negation}
 	\end{equation}
-	\label{eqn: quantifier-negation}
+	\label{eqn: demorgan-laws-quantifiers}
 \end{subequations}
+Equations \ref{eqn: demorgan-laws-quantifiers} are known as \textit{De Morgan's Laws for Quantifiers}.
 
-
-
+\subsection{Nested Quantifiers}
+Consider the $n$-ary predicate
+\[
+	P(x_{1}, x_{2}, \dots, x_{n})
+\]
+As discussed previously, this statement becomes a proposition if and only if all the free variables are either \textit{bound} or \textit{set} to a value.
+Suppose we bind (or set) $s < n$ of the free variables. 
+The result is  an ($s-n$)-ary predicate.
+Thus, the act of \textit{nesting} quantifiers is a way in which a predicate can be made into either a proposition or a predicate of lower \textit{arity}. 
+The total number of nested quantifiers may not exceed the arity of the predicate it quantifies.
 
 \end{document}
 
